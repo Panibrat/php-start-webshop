@@ -1,0 +1,66 @@
+// создаем репозиторий в папке "." - тоесть в текущей папке
+git init .
+
+// добавляем все файлы в данной папке
+git add *
+
+// добавляем удаленное зеркало нашего репозитория под названием origin
+
+git remote add origin http://github.com/your_repository_url.git/
+
+// что-то меняем в файле
+
+// фикусируем изменение с комментарием 
+git commit -m "Something changed"
+
+// отправляем изменения на зеркало
+
+// origin - удаленное зеракло
+// master - ветка разработки. по умолчанию master
+
+git push -u origin master
+
+// создаем проект и в нем папки:
+
+// config
+// components
+// models
+// views
+// controllers
+
+// объявляем константу пути нашего проекта
+define('ROOT', dirname(FILE));
+
+// подключаем класс маршрутизатора
+include_once(ROOT.'/components/Router.php');
+
+$router = new Router;
+$router->run();
+
+https://git-for-windows.github.io/
+
+Свойства системы:
+PATH
+C:\Program Files\Git\bin;C:\Program Files\Java\jdk1.8.0_31\bin
+
+cmd
+cd.. C:\wamp\www\WebShopIlya>dir
+
+C:\wamp\www\WebShopIlya>git init
+Reinitialized existing Git repository in C:/wamp/www/WebShopIlya/.git/
+
+Выделяем все файлы для отслеживания:
+C:\wamp\www\WebShopIlya>git add *
+
+C:\wamp\www\WebShopIlya>git status
+
+C:\wamp\www\WebShopIlya>git commit -m 'test'
+
+C:\wamp\www\WebShopIlya>git log
+
+Прописываем онлайн репозиторий:
+C:\wamp\www\WebShopIlya>git remote add origin https://github.com/PanibratHome/PHP_my_start.git
+
+C:\wamp\www\WebShopIlya>git push -u origin master
+
+C:\wamp\www\WebShopIlya>c:\wamp\bin\php\php5.5.12\php.exe -S localhost:8888 -t .
