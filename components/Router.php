@@ -19,21 +19,23 @@ class Router {
         //var_dump($this->routes);
         //echo 'Class Router, method run';
         $uri = $this->getURI(); 
-        //echo $uri;
+        echo $uri."<hr>";
         //var_dump( $this->routes);
         foreach ($this->routes as $uriPattern => $path) {
             //Сравниваем $uriPattern и $uri
-            //echo $uriPattern."---->".$path.'<hr>';
+            echo $uriPattern."---->".$path.'<hr>';
             if(preg_match("~$uriPattern~", $uri)){
-                // Определить какой контроллер и action обабатывают запрос
-                $segments = explode('/', $path);
+                // Получаем внутренний путь из внешнего согласно правилу.
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri) ;
+                //Определяем контроллер, action, параметры
+                $segments = explode('/', $internalRoute);
                 $controllerName = array_shift($segments).'Controller';
                 $controllerName = ucfirst($controllerName);
                 $actionName = 'action'.ucfirst(array_shift($segments));
-                //echo '<br>Класс: '.$controllerName;
-                //echo '<br>Метод: '.$actionName;
-            
-        
+                echo '<br>Класс: '.$controllerName;
+                echo '<br>Метод: '.$actionName;
+                $parameters = $segments;
+                print_r($parameters);
             // подключаем файл класса-контроллера
             $controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
             //echo "<hr>";
@@ -43,7 +45,9 @@ class Router {
             } //else {echo "NO FILE";}
             // Создаем объект, вызвать метод
             $controllerObject = new $controllerName;
-            $result = $controllerObject->$actionName();
+            
+            $result = call_user_func_array(array($controllerObject, $actionName),$parameters);
+            
             if($result !=null) {
                 break;
             }

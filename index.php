@@ -6,8 +6,12 @@ $pattern = '/(.+)-(.+)-(.+)/';
 $replacement = 'Month: $2 ,Day: $1, Year: $3';
 echo preg_replace($pattern, $replacement, $string);
 die;
- */
-
+ 
+$string = '/news/sport/114';
+$pattern = '~/news/([a-z]+)/([0-9]+)~';
+$replacement = 'news/view/$1/$2';
+echo preg_replace($pattern, $replacement, $string);
+*/
 // FRONT CONTROLLER
 
 

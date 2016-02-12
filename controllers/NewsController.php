@@ -1,12 +1,23 @@
 <?php
-
+include_once ROOT.'/models.News.php';
 class NewsController {
     public function actionIndex() {
-        echo 'Список новостей';
+        $newsList = array();
+        $newsList = News::getNewsList();
+        echo "<pre>";
+        var_dump($newsList);
+        echo "</pre>";
+        
         return true;
     }
-    public function actionView() {
-        echo 'Просмотр одной новости';
+    public function actionView($id) {
+        if($id){
+            $newsItem = News::getNewsItemById($id);
+            echo "<pre>";
+            var_dump($newsItem);
+            echo "</pre>";
+        }
+        echo 'actionView';
         return true;
     }
 }
