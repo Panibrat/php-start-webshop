@@ -1,6 +1,7 @@
 <?php
 
 return array (
+    'news/add' => 'news/addnews',
     'test' => 'product/test',
     'news/([0-9]+)' => 'news/view/$1',
     'news' => 'news/index',

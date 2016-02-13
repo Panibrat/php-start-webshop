@@ -1,4 +1,5 @@
 <?php
+include_once ROOT.'/models/News.php';
 
 class ProductController {
     public function actionList() {
@@ -6,7 +7,13 @@ class ProductController {
         return true;
     }
     public function actionTest() {
-        echo 'ProductController actionTest';
+        //echo '<hr>ProductController actionTest';
+        
+        $newsList = News::getNewsList();
+       /*echo"<pre>";
+        var_dump($newsList);
+        echo "</pre>";*/
+        include (ROOT.'/views/news/index.php');
         return true;
     }
 }

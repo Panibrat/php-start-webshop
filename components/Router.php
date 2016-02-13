@@ -19,11 +19,11 @@ class Router {
         //var_dump($this->routes);
         //echo 'Class Router, method run';
         $uri = $this->getURI(); 
-        echo $uri."<hr>";
+        //echo $uri."<hr>";
         //var_dump( $this->routes);
         foreach ($this->routes as $uriPattern => $path) {
             //Сравниваем $uriPattern и $uri
-            echo $uriPattern."---->".$path.'<hr>';
+            //echo $uriPattern."---->".$path.'<hr>';
             if(preg_match("~$uriPattern~", $uri)){
                 // Получаем внутренний путь из внешнего согласно правилу.
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri) ;
@@ -32,8 +32,8 @@ class Router {
                 $controllerName = array_shift($segments).'Controller';
                 $controllerName = ucfirst($controllerName);
                 $actionName = 'action'.ucfirst(array_shift($segments));
-                echo '<br>Класс: '.$controllerName;
-                echo '<br>Метод: '.$actionName;
+                //echo '<br>Класс: '.$controllerName;
+                //echo '<br>Метод: '.$actionName;
                 $parameters = $segments;
                 print_r($parameters);
             // подключаем файл класса-контроллера

@@ -31,4 +31,15 @@ class News {
         return $newsList;
         
     }
+        // МЕТОД МОДЕЛИ NEWS
+ 
+    public static function addNews($name, $text){
+        $db = DB::getConnection();
+        $query = "INSERT INTO news VALUES (NULL, '{$name}', NULL, '{$text}', 'test', 'test', 'test', 'test');";
+        $result = $db->query($query);
+        var_dump($db->errorInfo());
+        if($result){
+            return true;
+        }
+    }
 }

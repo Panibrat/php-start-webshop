@@ -19,5 +19,18 @@ class NewsController {
         }
         echo 'actionView';
         return true;
+        
     }
+        // НОВЫЙ МЕТОД В КОНТРОЛЛЕРЕ
+ 
+ 
+    public function actionAddnews(){
+ 
+        $name = $_POST['title'];
+        $post = $_POST['post'];
+ 
+    News::addNews($name, $post);
+    var_dump($post);
+    }
+    
 }
