@@ -1,5 +1,5 @@
 <?php
-include_once ROOT.'/models.News.php';
+include_once ROOT.'/models/News.php';
 class NewsController {
     public function actionIndex() {
         $newsList = array();
