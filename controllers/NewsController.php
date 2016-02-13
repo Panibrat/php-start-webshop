@@ -5,16 +5,16 @@ class NewsController {
         $newsList = array();
         $newsList = News::getNewsList();
         echo "<pre>";
-        var_dump($newsList);
+        print_r($newsList);
         echo "</pre>";
-        
+        require_once (ROOT.'/views/news/index.php');
         return true;
     }
     public function actionView($id) {
         if($id){
             $newsItem = News::getNewsItemById($id);
             echo "<pre>";
-            var_dump($newsItem);
+            print_r($newsItem);
             echo "</pre>";
         }
         echo 'actionView';
